@@ -1,0 +1,17 @@
+# FROM node:10
+# Create image based on the official Node image from dockerhub
+FROM node:lts-buster-slim
+
+WORKDIR /usr/app/frontend
+# WORKDIR  /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+# Get all the code needed to run the app
+COPY . /usr/app/frontend
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
