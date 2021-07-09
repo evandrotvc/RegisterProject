@@ -6,6 +6,7 @@
     "password": "postgres",
     "database": "registerProject",
     "synchronize": true,
+    "url": "postgres://postgres:postgres@192.168.99.100:5432/registerProject",
     "logging": false,
     "entities" : [
         "./src/models/*.ts"

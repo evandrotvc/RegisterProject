@@ -1,4 +1,10 @@
 version: '3' ## versão do docker
+
+networks:
+    post-net:
+      driver: bridge
+    react-net:
+
 services: 
     db:
         image: 'postgres:latest'
@@ -9,23 +15,39 @@ services:
         volumes: ## monitoro a pasta atual . e envio as alterações para /usr/app
             # - ./pgdata:/var/lib/postgresql/data
             - postgres_volume:/var/lib/postgresql/data
-        ports: ## redirecionamento de porta quando chegar alguma requisição na porta 3000 chama o container na porta 3000
+        # ports: ## redirecionamento de porta quando chegar alguma requisição na porta 3000 chama o container na porta 3000
+        #     - "5432:5432"
+        expose:
+            - 5432
+        ports:
             - "5432:5432"
         networks:
             - post-net
+
+
     app:
-        container_name: registerProject-backend
+        container_name: registerProject-backend        
         restart: always
         build: backend  ## localização do dockerfile
         command: npm run dev
         ports:
             - "3333:3333" ## redirecionamento de porta quando chegar alguma requisição na porta 3333 chama o container na porta 3333
+        environment:
+            SEQ_DB: registerDB
+            DB_USER: postgres
+            DB_PASS: postgres
+            DB_HOST: db
+            DATABASE_URL: postgres://postgres:postgres@db:5432/registerDB
+            PGPORT: 5432
+            # DATABASE_URL: postgres://postgres:postgres@0.0.0.0:5432/registerDB
         volumes:
             # /usr/app/backend
             - ./backend:/usr/app/backend
             - /usr/app/backend/node_modules
         depends_on:
             - db
+        networks:
+            - post-net
         expose: 
             - 3333
     
@@ -35,7 +57,7 @@ services:
         restart: always
         build:
             context: frontend
-            target: development
+            # target: development  causava erro!
         command: npm start
         ports:
             - 3000:3000
@@ -51,6 +73,6 @@ services:
 volumes:
     postgres_volume:
     node_modules:
-networks:
-    react-net:
-    post-net:
+
+
+        # TYPEORM_URL=postgres://postgres:postgres@host.docker.internal:5432/registerProject
