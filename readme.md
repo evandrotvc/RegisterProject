@@ -45,9 +45,10 @@ to show the containers created.
 Examples application features
 
 ### Login
-
+![Alt Text](https://github.com/evandrotvc/RegisterProject/blob/master/frontend/src/assets/videos/login.gif)
 
 ### Register
+![Alt Text](https://github.com/evandrotvc/RegisterProject/blob/master/frontend/src/assets/videos/register.gif)
 
 <!-- ### 🔩 Analise os testes de ponta a ponta
 
