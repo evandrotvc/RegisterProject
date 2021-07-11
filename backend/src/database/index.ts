@@ -1,10 +1,8 @@
 import {createConnection} from 'typeorm'
 
-// createConnection();
-
 export const connectDb = async () => {
     const conexao = await createConnection();
-    console.log(`App conectado ao BD ${conexao.options.name}`);
+    console.log(`App conectado ao BD ${conexao.options.database}`);
     
 
     process.on('SIGINT', () => {

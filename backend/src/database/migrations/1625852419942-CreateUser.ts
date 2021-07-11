@@ -30,15 +30,7 @@ export class CreateUser1625852419942 implements MigrationInterface {
                     {
                         name: "password",
                         type: "varchar",
-                    },
-                    {
-                        name: "cpf",
-                        type: "varchar",
-                    },
-                    {
-                        name: "pis",
-                        type: "varchar",
-                    },
+                    },                   
                     {
                         name: "created_at",
                         type: "timestamp", //adiciona fuso horário na data do horário

@@ -70,7 +70,7 @@ const SignUp: React.FC = () => {
         <AnimationFormContainer>
           <img src={logo} alt="GoBarber" />
           <Form
-            initialData={{ name: "Evandro Thalles" }}
+            initialData={{ name: "" }}
             ref={FormRef}
             onSubmit={handleSubmit}
           >

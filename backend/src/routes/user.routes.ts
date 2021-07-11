@@ -1,34 +1,21 @@
 import {Router} from 'express'
 
-import CreateUserService from '../modules/User/services/CreateUserService'
+import UserService from '../modules/User/services/UserService'
 const UsersRouter = Router();
 
 
-UsersRouter.post('/register' , (req, resp ,next) => {
+UsersRouter.post('/' , async(req, resp ,next) => {
+    try {
+        const {email, password, name} = req.body;
 
-    const DataUser = {
-        name : 'Evandro Thalles',
-        password: '123456',
-        email: 'evandro@gmail.com',
-        cpf: '12343243243',
-        pis: '12222',
-        endereco: {
-            Pais: 'Brasil',
-            Estado: 'df',
-            Município: 'vicente pires',
-            CEP: '423423424',
-            Rua: '5',
-            Número: '5',
-            Complemento: 'chacara'
+        const _UserService = new UserService();
 
-        }
+        const user = await _UserService.CreateUser_execute({email, name, password});
+
+        resp.json({name: user.name , email:user.email}).status(200);   
+    } catch (err) {
+        return resp.status(400).json({error : err.message})
     }
-
-    const _CreateUserService = new CreateUserService();
-
-    const user = _CreateUserService.execute(DataUser)
-
-    resp.json(user).status(200);
 })
 
 export default UsersRouter
