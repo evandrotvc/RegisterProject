@@ -29,7 +29,7 @@ app.use(route)
 
 
 const server = app.listen(3333, () => {
-   console.log('\n ✈️ server running on port 3333 ✈️');
+   console.log('\n 🚀 server running on port 3333 🚀');
 });
 
 
