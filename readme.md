@@ -76,7 +76,7 @@ Tools useds in project
 
 <!-- * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - Typescript -->
 
-*  - Typescript (Express)
+*  Typescript (Express)
 *  React Js
 *  TypeOrm
 *  Postgres (database)
