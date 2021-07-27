@@ -5,8 +5,8 @@
     "username": "postgres",
     "password": "postgres",
     "database": "registerProject",
-    "synchronize": true,
-    "url": "postgres://postgres:postgres@your_IPMachine/registerProject",
+    "synchronize": false,
+    "url": "postgres://postgres:postgres@192.168.99.100:5432/registerProject",
     "logging": false,
     "entities" : [
         "./src/models/*.ts"
@@ -18,3 +18,5 @@
         "migrationsDir" : "./src/database/migrations"
     }
 }
+
+

@@ -15,6 +15,12 @@ class User {
     @Column()
     password: string;   
 
+    @Column()
+    cpf: number;
+    
+    @Column()
+    pis: number;
+
     @CreateDateColumn()
     created_at: Date
 

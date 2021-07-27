@@ -7,7 +7,9 @@ interface AuthState {
 }
 
 interface SignInCredentials {
-  email: string;
+  email?: string;
+  pis?: string;
+  cpf?: string;
   password: string;
 }
 
@@ -32,15 +34,19 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
     return {} as AuthState; // Forçando uma tipagem para o typescript para interromper os erros de tipagem
   });
-  const signIn = useCallback(async ({ email, password }) => {
+  const signIn = useCallback(async ({ email, cpf, pis , password }) => {
     const response = await api.post("/sessions", {
       email,
+      cpf,
+      pis,
       password,
     });
 
     const { token, user } = response.data;
     localStorage.setItem("@GoBarber:token", token);
     localStorage.setItem("@GoBarber:user", JSON.stringify(user));
+
+    // Cookies.set('session_id', token, {expires: 1});
 
     setData({ token, user });
   }, []);

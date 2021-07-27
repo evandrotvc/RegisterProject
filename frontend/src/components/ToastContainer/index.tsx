@@ -9,7 +9,7 @@ interface ToastContainerProps {
   message: ToastMessage[];
 }
 const ToastContainer: React.FC<ToastContainerProps> = ({ message }) => {
-  debugger;
+
   const MessagesWithTransictions = useTransition(
     message,
      (msg) => msg?.id, // recebe uma função que pega a key da mensagem(ID) daquele item
