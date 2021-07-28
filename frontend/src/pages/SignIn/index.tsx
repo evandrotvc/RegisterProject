@@ -21,7 +21,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useToast } from "../../context/ToastContext";
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import api from "../../services/api";
+// import api from "../../services/api";
 
 
 require('dotenv').config();
@@ -116,7 +116,7 @@ const SignIn: React.FC = () => {
           localStorage.setItem("@GoBarber:user", JSON.stringify(user));
           localStorage.setItem("@GoBarber:Firebase", JSON.stringify(tokenInfo));
           // history.push("/dashboard"); // redireciona para dashboard, caso logou com sucesso.
-          api.post('/', tokenInfo.token);
+          // api.post('/', tokenInfo.token);
           window.location.href = "/dashboard";
           })
         }
