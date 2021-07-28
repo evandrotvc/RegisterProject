@@ -44,6 +44,12 @@ to show the containers created.
 
 Examples application features
 
+Run Tests units with:
+
+```
+yarn test
+```
+
 ### Login
 ![Alt Text](https://github.com/evandrotvc/RegisterProject/blob/master/frontend/src/assets/videos/login.gif)
 
