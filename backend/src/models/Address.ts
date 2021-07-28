@@ -26,7 +26,7 @@ class Address {
     municipio: string;
 
     @Column()
-    cep: number;
+    cep: string;
 
     @Column()
     rua: string;

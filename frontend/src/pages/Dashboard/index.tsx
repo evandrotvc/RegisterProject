@@ -48,7 +48,6 @@ return (
     <Content>
       {/** Div para ANIMAÇÃO, APENAS ISSO */}
       <AnimationFormContainer>
-      {/* <img src={spiderman} className="spiderman" alt= "spider" /> */}
       <h1>{`Olá ${user_datas.name}`}</h1>
 
       <Link to="/edit">

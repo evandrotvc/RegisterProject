@@ -21,8 +21,8 @@ interface ResponseDTO{
 export default class SessionService {
     async AuthenticatedUser_execute({email,cpf, pis ,password} : RequestDTO) : Promise<ResponseDTO>{
 
-        const filter = email ? email : cpf ? Number(cpf) : pis ? Number(pis) : null;
-        let name_filter = ''
+        const filter = email ? email : cpf ? cpf : pis ? pis : null;
+        let type_filter = ''
         const obj :RequestDTO = {
             email: email,
             cpf: cpf,
@@ -32,9 +32,8 @@ export default class SessionService {
 
         for (var [key, value] of Object.entries(obj)) {
             if(value){
-                name_filter = key;
+                type_filter = key;
             }
-            console.log(key + ' ' + value); // "a 5", "b 7", "c 9"
         }
 
         const filters2 = {
@@ -47,8 +46,8 @@ export default class SessionService {
 
         const UserRepository = getRepository(User);
 
-        // const user = await UserRepository.findOne(filters2);
-        const user = await UserRepository.findOne({[`${name_filter}`]: filter});
+        // const user2 = await UserRepository.findOne(`${filters2}`);
+        const user = await UserRepository.findOne({[`${type_filter}`]: filter});
 
         if(!user){
             throw new AppErrors("Email or password is incorrect.", 400);

@@ -35,7 +35,7 @@ export const AnimationFormContainer = styled.div`
   place-content: center; /** CENTRALIZA TODOS OBJETOS , mt útil */
   animation: ${AppearFromLeft} 1s; /**Animação do container */
   form {
-    margin: 80px 0;
+    margin: 30px 0;
     width: 340px;
     text-align: center;
 
@@ -46,13 +46,17 @@ export const AnimationFormContainer = styled.div`
     a {
       color: #f4ede8;
       display: block;
-      margin-top: 24px;
+      margin-top: 12px;
       text-decoration: none;
       transition: color 0.2s;
 
       &:hover {
         color: ${shade(0.2, "#f4ede8")};
       }
+    }
+
+    input{
+      height: 40%;
     }
   }
 
@@ -78,8 +82,9 @@ export const AnimationFormContainer = styled.div`
 
   .button_oauth{
     display: flex;
-
+    cursor: pointer;
     button{
+      
       width: 40%;
       height: 70%;
       margin-left: 4px;

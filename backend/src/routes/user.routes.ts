@@ -10,9 +10,17 @@ UsersRouter.post('/' , async(req, resp ,next) => {
     try {
         const {email, password, name} = req.body;
 
+        const user_info: UserDTO = {
+            email: email,
+            password: password,
+            name: name,
+            pis: '',
+            cpf: ''
+        }
+
         const _UserService = new UserService();
 
-        const user = await _UserService.CreateUser_execute({email, name, password});
+        const user = await _UserService.CreateUser_execute(user_info);
 
         resp.json({name: user.name , email:user.email}).status(200);   
     } catch (err) {
@@ -73,7 +81,7 @@ UsersRouter.get('/:email',EnsureAuth , async(req, resp ,next) => {
 
 
 
-UsersRouter.delete('/:email',EnsureAuth , async(req, resp ,next) => {
+UsersRouter.delete('/:email', EnsureAuth , async(req, resp ,next) => {
     try {
         const email = req.params.email;
 

@@ -7,7 +7,7 @@
     "build": "tsc",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/index.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "test": "jest --forceExit --runInBand --detectOpenHandles --colors --watchAll --testTimeout=10000",
+    "test": "jest --forceExit --runInBand --detectOpenHandles --colors --watchAll --testTimeout=3000",
     "test:ci": "npx jest --ci --runInBand --silent --colors --coverage"
   },
   "dependencies": {
@@ -49,6 +49,7 @@
     "nodemon": "^2.0.9",
     "superagent": "^6.1.0",
     "supertest": "^6.1.4",
+    "supertest-session": "^4.1.0",
     "ts-jest": "^27.0.4",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.3.5"

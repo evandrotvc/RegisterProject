@@ -1,5 +1,6 @@
 import React, { useRef, useCallback, useEffect } from "react";
-import { FiLogIn, FiMail, FiLock, FiGithub} from "react-icons/fi";
+import { FiLogIn, FiMail, FiLock, FiGithub , FiInfo} from "react-icons/fi";
+import { FaFile} from "react-icons/fa";
 import { FaGoogle} from "react-icons/fa";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
@@ -151,7 +152,7 @@ const SignIn: React.FC = () => {
         <AnimationFormContainer>
           <img src={logo} alt="GoBarber" />
           <Form ref={FormRef} onSubmit={handleSubmit}>
-            <h1>Faça seu login</h1>
+            <h1>Olá Visitante</h1>
 
             <Input
               name="email"
@@ -162,14 +163,14 @@ const SignIn: React.FC = () => {
 
             <Input
               name="cpf"
-              icon={FiMail}
+              icon={FiInfo}
               type="cpf"
               placeholder="CPF"
             />
 
             <Input
               name="pis"
-              icon={FiMail}
+              icon={FaFile}
               type="pis"
               placeholder="PIS"
             />
@@ -182,7 +183,7 @@ const SignIn: React.FC = () => {
             />
             <Button type="submit">Entrar</Button>
 
-            <a href="forgot">Esqueci minha Senha</a>
+            {/* <a href="forgot">Esqueci minha Senha</a> */}
           </Form>
           <Link to="/signup">
             <FiLogIn />

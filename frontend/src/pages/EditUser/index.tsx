@@ -19,6 +19,7 @@ import Input from "../../components/Inputs";
 import getValidationErrors from "../../utils/getValidationsErrors";
 import { useToast } from "../../context/ToastContext";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 interface FormData {
   name: string;
@@ -60,6 +61,7 @@ const EditUser: React.FC = () => {
   const history = useHistory();
   const FormRef = useRef<FormHandles>(null);
   const [Step , SetStep] = useState(0);
+  const {signOut} = useAuth();
   const [data_user , Setdata_user] = useState<FormData>();  
 
   const handleSubmit = useCallback(
@@ -70,8 +72,21 @@ const EditUser: React.FC = () => {
           email: Yup.string()
             .required("E-mail obrigatório")
             .email("Digite email válido"),
-          cpf: Yup.number()
-            .required("cpf obrigatório"),
+            cpf: Yup.string().when( {
+              is: '',
+              then: Yup.string().notRequired(),
+              otherwise: Yup
+                .string()
+                .matches(/^\d{3}\d{3}\d{3}\d{2}$/ , 'Cpf deve ser somente números e sem pontuação').min(11)
+            }),
+
+            pis: Yup.string().when( {
+              is: '',
+              then: Yup.string().notRequired(),
+              otherwise: Yup
+                .string()
+                .matches(/^\d{3}\d{5}\d{2}\d{1}$/ , 'Cpf deve ser somente números e sem pontuação').min(11)
+            }),
         });
         await schema.validate(data, {
           abortEarly: false,
@@ -156,7 +171,15 @@ const EditUser: React.FC = () => {
     
   }
   const HandleRemoveUser = async () =>{
-    const response = await api.delete(`/users/${data_user?.email}`, {withCredentials:true});
+    try {
+      await api.delete(`/users/${data_user?.email}`, {withCredentials:true});  
+      signOut();
+      window.location.href = '/';
+
+    } catch (error) {
+      
+    }
+    
 }
   return (
     <Container>

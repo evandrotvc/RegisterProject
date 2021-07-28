@@ -13,7 +13,7 @@ interface Responselist  {
 }
 export default class UserService{
    
-    async CreateUser_execute({email, name, password}: UserDTO) : Promise<User> {
+    async CreateUser_execute({email ,name, password}: UserDTO) : Promise<User> {
         const UserRepository = getRepository(User);
 
         const find_user = await UserRepository.findOne({where: {email}});
@@ -28,7 +28,7 @@ export default class UserService{
         const user = UserRepository.create({
             name: name,
             email: email,
-            password: password_hashed
+            password: password_hashed,
         });
 
         await UserRepository.save(user);
@@ -65,8 +65,8 @@ export default class UserService{
 
         user.name = name;
         user.email = email;
-        user.cpf = Number(cpf);
-        user.pis = Number(pis);
+        user.cpf = cpf;
+        user.pis = pis;
         await UserRepository.save(user);
 
         const find_address = await AddressRepository.findOne({user_id: user.id} );
@@ -77,7 +77,7 @@ export default class UserService{
             return {user: user , address: _address};
         }
 
-        find_address.cep = Number(endereco.CEP),
+        find_address.cep = endereco.CEP,
         find_address.complemento= endereco.Complemento,
         find_address.estado =endereco.Estado,
         find_address.municipio= endereco.Municipio,
@@ -145,7 +145,7 @@ export default class UserService{
         const AddressRepository = getRepository(Address);
         const new_address = AddressRepository.create({
             user_id: user_id,
-            cep: Number(endereco.CEP),
+            cep: endereco.CEP,
             complemento: endereco.Complemento,
             estado: endereco.Estado,
             municipio: endereco.Municipio,

@@ -16,10 +16,10 @@ class User {
     password: string;   
 
     @Column()
-    cpf: number;
+    cpf: string;
     
     @Column()
-    pis: number;
+    pis: string;
 
     @CreateDateColumn()
     created_at: Date
