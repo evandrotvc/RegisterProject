@@ -1,7 +1,7 @@
 # FROM node:10
 # Create image based on the official Node image from dockerhub
 # FROM node:lts-buster-slim
-FROM node:16.19
+FROM node:16.0
 # FROM alpine:3.16
 
 WORKDIR /usr/app/frontend

@@ -59,6 +59,8 @@ services:
             context: frontend
             # target: development  causava erro!
         command: npm start
+        environment:
+            - CHOKDIR_USERPOOLING=true
         ports:
             - 3000:3000
         volumes:
